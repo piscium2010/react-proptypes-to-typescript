@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "es5",
+        "declaration": false,
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "sourceMap": true,
+        "outDir": "dist",
+        "rootDir": "./src",
+        "lib": ["dom", "es2015"],
+        "jsx": "react"
+    },
+    "exclude": ["node_modules", "test", "dist"],
+    "types": ["node", "jest"]
+}

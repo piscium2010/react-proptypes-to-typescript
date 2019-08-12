@@ -1,0 +1,67 @@
+{
+    "name": "react-proptypes-to-typescript",
+    "version": "1.0.0",
+    "description": "Convert React code from JavaScript to TypeScript",
+    "main": "dist/index.js",
+    "scripts": {
+        "pretest": "npm run build",
+        "test": "jest",
+        "coverage": "jest --coverage",
+        "posttest": "npm run lint",
+        "prelint": "npm run clean",
+        "lint": "tslint --project tsconfig.json --format codeFrame --exclude test/**/*.tsx",
+        "prepublish": "npm run build",
+        "clean": "rm -rf d",
+        "prebuild": "npm run clean",
+        "build": "tsc --pretty",
+        "precommit": "lint-staged",
+        "prettier": "prettier --write *.{js,json,css,md,ts,tsx}"
+    },
+    "jest": {
+        "transform": {
+            ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+        "testURL": "http://localhost/",
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ]
+    },
+    "lint-staged": {
+        "*.{js,json,css,md,ts,tsx}": [
+            "node_modules/.bin/prettier --write",
+            "git add"
+        ]
+    },
+    "bin": "dist/cli.js",
+    "author": "Mohsen Azimi <me@azimi.me>",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "chalk": "^2.4.1",
+        "commander": "^2.15.1",
+        "detect-indent": "^5.0.0",
+        "glob": "^7.1.2",
+        "lodash": "^4.17.11",
+        "prettier": "^1.12.1",
+        "typescript": "^3.5.3"
+    },
+    "devDependencies": {
+        "@types/chalk": "^2.2.0",
+        "@types/commander": "^2.9.1",
+        "@types/detect-indent": "^5.0.0",
+        "@types/glob": "^5.0.35",
+        "@types/jest": "^22.2.3",
+        "@types/lodash": "^4.14.135",
+        "@types/node": "^10.1.2",
+        "@types/prettier": "^1.12.2",
+        "@types/react": "^16.3.14",
+        "dedent": "^0.7.0",
+        "husky": "^0.14.3",
+        "jest": "^22.4.4",
+        "lint-staged": "^7.1.1",
+        "ts-jest": "^22.4.6",
+        "ts-node": "^6.0.3",
+        "tslint": "^5.10.0"
+    }
+}
