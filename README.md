@@ -76,7 +76,13 @@ npm install -g react-proptypes-to-typescript
 ```
 
 ```
-react-proptypes-to-typescript ./src/**/*.js --keep-original-files=true
+react-proptypes-to-typescript "./src/**/*.js"
+```
+
+or
+
+```
+react-proptypes-to-typescript "./src/**/*.js" --remove-original-files
 ```
 
 ## Development

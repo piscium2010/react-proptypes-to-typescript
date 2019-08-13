@@ -78,6 +78,7 @@ export function compile(
             tabWidth: 2,
             trailingComma: 'none',
             useTabs: false,
+            parser: 'babel',
         },
         incomingPrettierOptions,
     );
