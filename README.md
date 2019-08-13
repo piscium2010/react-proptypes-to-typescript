@@ -18,22 +18,22 @@ Transforms React code written in JavaScript to TypeScript. This is based on popu
 ```jsx
 class MyComponent extends React.Component {
     static propTypes = {
-        prop1: React.PropTypes.string.isRequired,
-        prop2: React.PropTypes.number,
+        alice: PropTypes.string.isRequired,
+        ate: PropTypes.number,
     };
-    constructor() {
-        super();
-        this.state = { foo: 1, bar: 'str' };
+    constructor(props) {
+        super(props);
+        this.state = { allen: '' };
     }
-    render() {
-        return (
-            <div>
-                {this.state.foo}, {this.state.bar}, {this.state.baz}
-            </div>
-        );
-    }
+
     onClick() {
-        this.setState({ baz: 3 });
+        this.setState({ drink: 3 });
+    }
+
+    render() {
+        const { cake } = this.props;
+        const { milk } = this.state;
+        return <div>HOME</div>;
     }
 }
 ```
@@ -42,28 +42,27 @@ class MyComponent extends React.Component {
 
 ```tsx
 interface IMyComponentProps extends React.HTMLAttributes<Element> {
-    prop1: string;
-    prop2?: number;
+    alice: string;
+    ate?: number;
+    cake?: any;
 }
 type MyComponentState = {
-    baz?: any;
-    bar?: any;
-    foo?: any;
+    allen?: string;
+    drink?: number;
+    milk?: any;
 };
 class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
-    constructor() {
-        super();
-        this.state = { foo: 1, bar: 'str' };
-    }
-    render() {
-        return (
-            <div>
-                {this.state.foo}, {this.state.bar}, {this.state.baz}
-            </div>
-        );
+    constructor(props) {
+        super(props);
+        this.state = { allen: '' };
     }
     onClick() {
-        this.setState({ baz: 3 });
+        this.setState({ drink: 3 });
+    }
+    render() {
+        const { cake } = this.props;
+        const { milk } = this.state;
+        return <div>HOME</div>;
     }
 }
 ```
@@ -73,17 +72,12 @@ class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
 ### CLI
 
 ```
-npm install -g react-js-to-ts
+npm install -g react-proptypes-to-typescript
 ```
 
 ```
-react-js-to-ts my-react-js-file.js
+react-proptypes-to-typescript ./src/**/*.js --keep-original-files=true
 ```
-
-### VSCode plugin
-
-details
-[Download from VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=mohsen1.react-javascript-to-typescript-transform-vscode#overview)
 
 ## Development
 
@@ -93,20 +87,4 @@ Tests are organized in `test` folder. For each transform there is a folder that 
 
 ```
 npm test
-```
-
-#### Watch mode
-
-Pass `-w` to `npm test`
-
-```
-npm test -- -w
-```
-
-#### Only a single test case
-
-Pass `-t` with transform name and case name space separated to `npm test`
-
-```
-npm test -- -t "react-js-make-props-and-state-transform propless-stateless"
 ```
