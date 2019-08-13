@@ -23,6 +23,7 @@ class MyComponent extends React.Component {
     };
     constructor(props) {
         super(props);
+        this.ref = React.createRef();
         this.state = { allen: '' };
     }
 
@@ -33,7 +34,7 @@ class MyComponent extends React.Component {
     render() {
         const { cake } = this.props;
         const { milk } = this.state;
-        return <div>HOME</div>;
+        return <div ref={this.ref}>HOME</div>;
     }
 }
 ```
@@ -52,8 +53,10 @@ type MyComponentState = {
     milk?: any;
 };
 class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
+    ref: any;
     constructor(props) {
         super(props);
+        this.ref = React.createRef();
         this.state = { allen: '' };
     }
     onClick() {
@@ -62,7 +65,7 @@ class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
     render() {
         const { cake } = this.props;
         const { milk } = this.state;
-        return <div>HOME</div>;
+        return <div ref={this.ref}>HOME</div>;
     }
 }
 ```
@@ -76,7 +79,13 @@ npm install -g react-proptypes-to-typescript
 ```
 
 ```
-react-proptypes-to-typescript ./src/**/*.js --keep-original-files=true
+react-proptypes-to-typescript "./src/**/*.js"
+```
+
+or
+
+```
+react-proptypes-to-typescript "./src/**/*.js" --remove-original-files
 ```
 
 ## Development

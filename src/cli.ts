@@ -42,7 +42,7 @@ program
     .option('--trailing-comma <none|es5|all>', 'Print trailing commas wherever possible when multi-line.', 'none')
     .option('--use-tabs', 'Indent with tabs instead of spaces.', false)
     .option('--ignore-prettier-errors', 'Ignore (but warn about) errors in Prettier', false)
-    .option('--keep-original-files', 'Keep original files', false)
+    .option('--remove-original-files', 'remove original files', false)
     .option('--keep-temporary-files', 'Keep temporary files', false)
     .option('--print', 'print output to console', false)
     .usage('[options] <filename or glob>')
@@ -69,6 +69,9 @@ program
         }
         let errors = false;
         for (const filePath of files) {
+            if (!fs.existsSync(filePath)) {
+                continue;
+            }
             console.log(`Transforming ${filePath}...`);
             const extension = getExtension(filePath);
             const newPath = filePath.replace(/\.jsx?$/, extension);
@@ -79,7 +82,7 @@ program
                 if (program.print) {
                     console.log('result:\n', result);
                 }
-                if (!program.keepOriginalFiles) {
+                if (program.removeOriginalFiles) {
                     fs.unlinkSync(filePath);
                 }
                 fs.writeFileSync(newPath, result);
