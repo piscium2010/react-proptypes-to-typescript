@@ -1,7 +1,7 @@
 import * as React from "react";
 type MyComponentState = {
-  foo?: any,
-  bar?: any
+  foo?: number,
+  bar?: number
 };
 export default class MyComponent extends React.Component<{}, MyComponentState> {
   render() {

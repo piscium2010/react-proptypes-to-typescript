@@ -175,11 +175,12 @@ function getStatesOfReactComponentClass(
     const addMember = (name: ts.Identifier) => {
         const text = name ? name.text : '';
         if (text && !members.find(m => (m.name as ts.Identifier).text === text)) {
+            const type = typeChecker.getTypeAtLocation(name);
             const member = ts.createPropertySignature(
                 [],
                 text,
                 ts.createToken(ts.SyntaxKind.QuestionToken),
-                ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
+                typeChecker.typeToTypeNode(type),
                 undefined,
             );
             members.push(member);
@@ -188,6 +189,25 @@ function getStatesOfReactComponentClass(
 
     for (const member of classDeclaration.members) {
         const node = [member];
+
+        // constructor this.state = {}
+        const initialState = helpers.filter<ts.ExpressionStatement>(node, n => {
+            return ts.isExpressionStatement(n) &&
+                ts.isBinaryExpression(n.expression) &&
+                ts.isObjectLiteralExpression(n.expression.right) &&
+                n.expression.left.getText().match(/this\.state/)
+                ? true
+                : false;
+        });
+
+        initialState.forEach(s => {
+            const expression = s.expression as ts.BinaryExpression;
+            const objectLiteral = expression.right as ts.ObjectLiteralExpression;
+            objectLiteral.properties.forEach((p: any) => {
+                addMember(p.name);
+            });
+        });
+
         // argument of setState
         const setStateArguments = helpers
             .filter<ts.CallExpression>(node, n => {

@@ -3,7 +3,7 @@ interface IMyComponentProps extends React.HTMLAttributes<Element> {
   baz: string;
 }
 type MyComponentState = {
-  dynamicState?: any
+  dynamicState?: number
 };
 export default class MyComponent extends React.Component<
   IMyComponentProps,

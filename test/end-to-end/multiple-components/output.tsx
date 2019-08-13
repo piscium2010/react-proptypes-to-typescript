@@ -11,8 +11,8 @@ const Hey: React.SFC<HeyProps> = ({ name }) => {
   return <div>hey, {name}</div>;
 };
 type MyComponentState = {
-  foo?: any,
-  bar?: any
+  foo?: number,
+  bar?: number
 };
 export default class MyComponent extends React.Component<{}, MyComponentState> {
   render() {
