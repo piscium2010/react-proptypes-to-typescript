@@ -279,7 +279,7 @@ function createInterfaceHeritageClause() {
     return ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [expressionWithTypeArguments]);
 }
 
-function getPropsOfReactComponentClass( // qwert
+function getPropsOfReactComponentClass(
     classDeclaration: ts.ClassDeclaration,
     sourceFile: ts.SourceFile,
 ): ts.PropertySignature[] {
@@ -308,14 +308,16 @@ function getPropsOfReactComponentClass( // qwert
         names.push(node.name.text);
     });
 
-    const propsSignatures = names.map(name => {
-        return ts.createPropertySignature(
-            [],
-            name,
-            ts.createToken(ts.SyntaxKind.QuestionToken),
-            ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
-            undefined,
-        );
-    });
+    const propsSignatures = names
+        .filter(name => name !== 'children')
+        .map(name => {
+            return ts.createPropertySignature(
+                [],
+                name,
+                ts.createToken(ts.SyntaxKind.QuestionToken),
+                ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
+                undefined,
+            );
+        });
     return propsSignatures;
 }
