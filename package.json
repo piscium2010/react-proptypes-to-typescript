@@ -1,6 +1,6 @@
 {
     "name": "react-proptypes-to-typescript",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Convert React code from JavaScript to TypeScript",
     "main": "dist/cli.js",
     "scripts": {
@@ -35,7 +35,7 @@
         ]
     },
     "bin": "dist/cli.js",
-    "author": "Mohsen Azimi <me@azimi.me>",
+    "author": "541032442@qq.com",
     "license": "Apache-2.0",
     "dependencies": {
         "chalk": "^2.4.1",
