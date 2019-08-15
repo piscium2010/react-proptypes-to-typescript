@@ -1,6 +1,6 @@
 {
     "name": "react-proptypes-to-typescript",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Convert React code from JavaScript to TypeScript",
     "main": "dist/cli.js",
     "scripts": {
@@ -12,6 +12,7 @@
         "lint": "tslint --project tsconfig.json --format codeFrame --exclude test/**/*.tsx",
         "prepublish": "npm run build",
         "clean": "rm -rf dist",
+        "clean:win": "rmdir /q /s dist",
         "prebuild": "npm run clean",
         "build": "tsc --pretty",
         "precommit": "lint-staged",

@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import * as _ from 'lodash';
 import * as prettier from 'prettier';
 import * as detectIndent from 'detect-indent';
+import * as path from 'path';
 
 import { TransformFactoryFactory } from '.';
 
@@ -37,7 +38,7 @@ export function compile(
     // `program.getSourceFiles()` will include those imported files,
     // like: `import * as a from './file-a'`.
     // We should only transform current file.
-    const sourceFiles = program.getSourceFiles().filter(sf => sf.fileName === filePath);
+    const sourceFiles = program.getSourceFiles().filter(sf => path.normalize(sf.fileName) === path.normalize(filePath));
     const typeChecker = program.getTypeChecker();
 
     const result = ts.transform(
