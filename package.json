@@ -1,6 +1,6 @@
 {
     "name": "react-proptypes-to-typescript",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Convert React code from JavaScript to TypeScript",
     "main": "dist/cli.js",
     "scripts": {
@@ -36,7 +36,7 @@
         ]
     },
     "bin": "dist/cli.js",
-    "author": "541032442@qq.com",
+    "author": "piscium2010 <541032442@qq.com>",
     "license": "Apache-2.0",
     "dependencies": {
         "chalk": "^2.4.1",
@@ -64,5 +64,17 @@
         "ts-jest": "^22.4.6",
         "ts-node": "^6.0.3",
         "tslint": "^5.10.0"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/piscium2010/react-proptypes-to-typescript.git"
+    },
+    "keywords": [
+        "react",
+        "typescript",
+        "proptypes",
+        "transform",
+        "proptype"
+    ],
+    "homepage": "https://github.com/piscium2010/react-proptypes-to-typescript"
 }
