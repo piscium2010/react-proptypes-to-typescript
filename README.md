@@ -72,12 +72,13 @@ class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
 
 ## Usage
 
-### CLI
+### Install
 
 ```
 npm install -g react-proptypes-to-typescript
 ```
 
+### CLI
 ```
 react-proptypes-to-typescript "./src/**/*.js"
 ```
