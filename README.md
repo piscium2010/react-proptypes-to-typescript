@@ -1,6 +1,6 @@
 # React JavaScript to TypeScript Transform
 
-Transforms React code written in JavaScript to TypeScript. This is based on popular library [react-javascript-to-typescript-transform](https://github.com/lyft/react-javascript-to-typescript-transform) with a few feature customized.
+Converts React code written in JavaScript to TypeScript. This is based on popular library [react-javascript-to-typescript-transform](https://github.com/lyft/react-javascript-to-typescript-transform) with a few feature customized.
 
 对类库[react-javascript-to-typescript-transform](https://github.com/lyft/react-javascript-to-typescript-transform)源码进行了更改。
 优先考虑转换后代码的兼容性，减少手动修正的代码量，以实现快速迁移。
