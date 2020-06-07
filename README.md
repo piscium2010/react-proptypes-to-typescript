@@ -103,3 +103,5 @@ npm test
 
 #### 羞耻广告位
 [designare-table: 企业级react table组件, IE11 下性能完胜Ant Design](https://piscium2010.github.io/designare-table)
+
+[quickly setup environment to debug react source code - 迅速搭建React源码测试环境](https://github.com/piscium2010/debug-react)
